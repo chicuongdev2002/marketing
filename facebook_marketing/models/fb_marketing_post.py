@@ -134,7 +134,7 @@ class MarketingPost(models.Model):
         images = self.content_id.image_ids
         
         try:
-            access_token = self.account_id.access_token
+            access_token = self.page_id.access_token
             page_id = self.page_id.page_id
 
             # Tải lên từng ảnh riêng lẻ
