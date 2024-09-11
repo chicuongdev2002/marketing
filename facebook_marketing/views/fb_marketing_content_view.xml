@@ -1,0 +1,29 @@
+<!-- File: facebook_marketing/views/fb_marketing_content_view.xml -->
+<odoo>
+  <data>
+    <record id="view_marketing_content_form_facebook" model="ir.ui.view">
+      <field name="name">marketing.content.form.facebook</field>
+      <field name="model">marketing.content</field>
+      <field name="inherit_id" ref="maketing_content.view_marketing_content_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+          <page string="Facebook Marketing">
+            <group>
+              <field name="post_ids">
+                <tree>
+                  <field name="page_id" />
+                  <field name="comment" />
+                  <field name="schedule_post" />
+                  <field name="remind_time" />
+                  <field name="post_id" />
+                  <field name="post_url" widget="url" />
+                  <field name="state" />
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

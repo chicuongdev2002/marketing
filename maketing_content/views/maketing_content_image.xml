@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_marketing_content_image_form" model="ir.ui.view">
+        <field name="name">marketing.content.image.form</field>
+        <field name="model">marketing.content.image</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="image" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="marketing_content_image_kanban_view" model="ir.ui.view">
+        <field name="name">marketing.content.image.kanban</field>
+        <field name="model">marketing.content.image</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <img t-att-src="kanban_image('marketing.content.image', 'image', record.id.value)" class="img img-fluid"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_marketing_content_image" model="ir.actions.act_window">
+        <field name="name">Marketing Content Images</field>
+        <field name="res_model">marketing.content.image</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

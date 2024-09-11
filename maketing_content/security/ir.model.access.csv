@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_marketing_content_user,marketing.content user,model_marketing_content,group_marketing_content_user,1,1,1,1
+access_marketing_content_manager,marketing.content manager,model_marketing_content,group_marketing_content_manager,1,1,1,1
+access_marketing_content_image_user,marketing.content.image user,model_marketing_content_image,group_marketing_content_user,1,1,1,1
+access_marketing_content_image_manager,marketing.content.image manager,model_marketing_content_image,group_marketing_content_manager,1,1,1,1

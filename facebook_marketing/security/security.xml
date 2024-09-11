@@ -1,0 +1,142 @@
+<odoo>
+    <data>
+        <record id="group_account_user" model="res.groups"> 
+            <field name="name">Account User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        
+        <record id="group_account_manager" model="res.groups"> 
+            <field name="name">Account Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_account_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_fb_category_user" model="res.groups"> 
+            <field name="name">Facebook Category User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        
+        <record id="group_fb_category_manager" model="res.groups"> 
+            <field name="name">Facebook Category Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_fb_category_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_fb_page_user" model="res.groups"> 
+            <field name="name">Facebook Page User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        
+        <record id="group_fb_page_manager" model="res.groups"> 
+            <field name="name">Facebook Page Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_fb_page_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+<!-- 
+        <record id="group_marketing_product_user" model="res.groups"> 
+            <field name="name">Marketing Product User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        
+        <record id="group_marketing_product_manager" model="res.groups"> 
+            <field name="name">Marketing Product Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_marketing_product_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_marketing_blog_user" model="res.groups"> 
+            <field name="name">Marketing Blog User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        
+        <record id="group_marketing_blog_manager" model="res.groups"> 
+            <field name="name">Marketing Blog Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_marketing_blog_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record> -->
+
+        <record id="group_comment_user" model="res.groups"> 
+            <field name="name">Comment User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        
+        <record id="group_comment_manager" model="res.groups"> 
+            <field name="name">Comment Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_comment_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_marketing_post_user" model="res.groups"> 
+            <field name="name">Marketing Post User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        
+        <record id="group_marketing_post_manager" model="res.groups"> 
+            <field name="name">Marketing Post Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_marketing_post_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_marketing_content_user" model="res.groups"> 
+            <field name="name">Marketing Content User</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        
+        <record id="group_marketing_content_manager" model="res.groups"> 
+            <field name="name">Marketing Content Manager</field>
+            <field name ="category_id" ref="base.module_category_social"/>
+            <field name ="implied_ids" eval="[(4, ref('group_marketing_content_user'))]"/>
+            <field name ="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+          <record id="group_marketing_group_user" model="res.groups">
+            <field name="name">Marketing Group User</field>
+            <field name="category_id" ref="base.module_category_social" />
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+          </record>
+
+          <record id="group_marketing_group_manager" model="res.groups">
+            <field name="name">Marketing Group Manager</field>
+            <field name="category_id" ref="base.module_category_social" />
+            <field name="implied_ids" eval="[(4, ref('group_marketing_group_user'))]" />
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]" />
+          </record>
+            <!-- <record id="facebook_marketplace_integration_rule" model="ir.rule">
+              <field name="name">Facebook Marketplace Integration Multi-Company</field>
+              <field name="model_id" ref="model_facebook_marketplace_integration" />
+              <field name="global" eval="True" />
+              <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+            </record> -->
+            <!-- <record id="facebook_catalog_integration_rule" model="ir.rule">
+              <field name="name">Facebook Catalog Integration Multi-Company</field>
+              <field name="model_id" ref="model_facebook_catalog_integration" />
+              <field name="global" eval="True" />
+              <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+              <field name="groups" eval="[(4, ref('group_marketing_group_user')), (4, ref('group_marketing_group_manager'))]" />
+            </record> -->
+            <record id="facebook_catalog_integration_multi_company_rule" model="ir.rule">
+              <field name="name">Facebook Catalog Integration Multi-Company</field>
+              <field name="model_id" ref="model_facebook_catalog_integration" />
+              <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'child_of', [user.company_id.id])]</field>
+              <field name="groups" eval="[(4, ref('base.group_user'))]" />
+            </record>
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="menu_facebook_marketing" name="FacebookMarketing" parent="maketing_content.menu_config" sequence="0" />
+
+  <menuitem id="menu_facebook_groups" name="Facebook Groups" parent="menu_facebook_marketing" sequence="0" action="action_facebook_group" />
+
+  <menuitem id="menu_manager_account" name="Manager Account" parent="menu_facebook_marketing" action="action_manager_account" sequence="0" />
+
+  <menuitem id="menu_facebook_page" name="Manager Page" action="action_facebook_page" parent="menu_facebook_marketing" sequence="0" />
+
+  <!-- <menuitem id="menu_marketing_comment" name="Manager Comments" action="action_marketing_comment" parent="menu_facebook_marketing" sequence="0" /> -->
+
+  <!-- <menuitem id="menu_facebook_catalog_integration" name="Facebook Catalog" action="facebook_marketing.action_facebook_catalog_integration" parent="menu_facebook_marketing" sequence="0" /> -->
+
+  <menuitem id="menu_product_in_config" name="Products" parent="menu_facebook_marketing" sequence="10" action="product.product_template_action" />
+</odoo>

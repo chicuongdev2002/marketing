@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View for Marketing Blog -->
+        <record id="view_marketing_blog_form" model="ir.ui.view">
+            <field name="name">marketing.blog.form</field>
+            <field name="model">marketing.blog</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="row">
+                            <!-- Left Column: Image -->
+                            <div class="col-6" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                                <h5 style="font-weight: bold;">Blog Image</h5>
+                                <field name="temp_image" widget='image' class="oe_avatar" style="width: 100%;"/>
+                            </div>
+                            <!-- Right Column: Content -->
+                            <div class="col-6">
+                                <group>
+                                    <field name="blog_id" options="{'no_create': True}" />
+                                    <field name="content" placeholder="Subtitle"/>
+                                    <field name="url" readonly="1"/>
+                                </group>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Marketing Blog -->
+        <record id="action_marketing_blog" model="ir.actions.act_window">
+            <field name="name">Blog Marketing Content</field>
+            <field name="res_model">marketing.blog</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_marketing_blog_form"/>
+        </record>
+    </data>
+</odoo>

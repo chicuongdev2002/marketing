@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Form View for Marketing Content -->
+        <record id="view_marketing_content_form" model="ir.ui.view">
+            <field name="name">marketing.content.form</field>
+            <field name="model">marketing.content</field>
+            <field name="arch" type="xml">
+                <form string="Marketing Content">
+                    <sheet>
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-6">
+                                <group>
+                                    <field name="title"/>
+                                    <field name="content"/>
+                                    <field name="url"/>
+                                    <field name="include_link"/>
+                                </group>
+                            </div>
+                            <div class="col-6">
+                                <div class="o_background_img_container" style="border: 1px solid #ddd; padding: 10px;">
+                                    <h5>Images</h5>
+                                    <field name="image_ids" 
+                                        mode="kanban" 
+                                        options="{
+                                            'create_text': 'Add Image',
+                                            'kanban_image_field': 'image',
+                                            'preview_image_field': 'image',
+                                            'kanban_view_ref': 'your_module.marketing_content_image_kanban_view'
+                                        }" 
+                                        context="{'default_res_model': 'marketing.content', 'default_res_id': active_id}"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <notebook>
+                            <page string="Schedule">
+                                <!-- Content for Schedule Page -->
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View for Marketing Content -->
+        <record id="view_marketing_content_tree" model="ir.ui.view">
+            <field name="name">marketing.content.tree</field>
+            <field name="model">marketing.content</field>
+            <field name="arch" type="xml">
+                <tree string="Marketing Content">
+                    <field name="title"/>
+                    <field name="content"/>
+                    <field name="url"/>
+                    <field name="include_link"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Marketing Content -->
+        <record id="action_marketing_content" model="ir.actions.act_window">
+            <field name="name">Marketing Content</field>
+            <field name="res_model">marketing.content</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_marketing_content_tree"/>
+            <field name="view_id" ref="view_marketing_content_form"/>
+        </record>
+    </data>
+</odoo>

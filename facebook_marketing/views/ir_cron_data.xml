@@ -1,0 +1,40 @@
+<!-- kiểm tra các bài viết đã được lên lịch và đăng chúng khi đến thời gian đã định. -->
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_post_scheduled" model="ir.cron">
+            <field name="name">Post Scheduled</field>
+            <field name="model_id" ref="model_marketing_post"/>
+            <field name="state">code</field>
+            <field name="code">model._post_scheduled()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="ir_cron_auto_comment" model="ir.cron">
+            <field name="name">Auto Comment</field>
+            <field name="model_id" ref="model_marketing_post"/> <!-- Sửa lại model_id cho đúng -->
+            <field name="state">code</field>
+            <field name="code">model.run_auto_comment_cron()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+        <record id="ir_cron_refresh_account_facebook_tokens" model="ir.cron">
+            <field name="name">Refresh account Access Tokens</field>
+            <field name="model_id" ref="model_manager_account"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_refresh_tokens()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View for Marketing Product -->
+        <record id="view_marketing_content_product_form" model="ir.ui.view">
+            <field name="name">marketing.content.product.form</field>
+            <field name="model">marketing.product</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="row">
+                            <!-- Left Column: Image -->
+                            <div class="col-6" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                                <h5 style="font-weight: bold;">Product Image</h5>
+                                <field name="temp_image" widget='image' class="oe_avatar" style="width: 100%;"/>
+                            </div>
+                            <!-- Right Column: Content -->
+                            <div class="col-6">
+                                <group>
+                                    <field name="product_id" options="{'no_create': True}" />
+                                    <field name="content" />
+                                    <field name="url" />
+                                    <field name="include_link" />
+                                </group>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Marketing Product -->
+        <record id="action_marketing_product" model="ir.actions.act_window">
+            <field name="name">Product Marketing Content</field>
+            <field name="res_model">marketing.product</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_marketing_content_product_form"/>
+        </record>
+    </data>
+</odoo>

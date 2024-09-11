@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <odoo>
+        <record id="view_marketing_post_form" model="ir.ui.view">
+            <field name="name">marketing.post.form</field>
+            <field name="model">marketing.post</field>
+            <field name="arch" type="xml">
+                <form>
+                    <style>
+                        .custom_group .o_horizontal_separator {
+                            color: #71639E;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <header>
+                          <!-- <button name="action_post_now" string="Post Now" type="object" class="oe_highlight" />
+                          <button name="action_schedule_post" string="Schedule Post" type="object" /> -->
+                          <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <!-- <group string="Content" class="custom_group">
+                            <field name="content_id" options="{'no_create': True}"/>
+                        </group> -->
+                        <group string="Account &amp; Page" class="custom_group">
+                            <field name="account_id" options="{'no_create': True}"/>
+                            <field name="page_id" options="{'no_create': True}" domain="[('account_id', '=', account_id), ('is_favorite', '=', True)]" />
+                            <!-- <field name="schedule_post"/> -->
+                            <field name="post_now" />
+                            <field name="schedule_post" invisible="post_now" />
+                        </group>
+                        <group string="Comment" class="custom_group">
+                            <field name="comment_suggestion_id" widget="many2many_tags" options="{'no_create': True}" />
+                            <!-- <field name="comment"/> -->
+                            <field name="remind_time"/>
+                            <field name="start_auto_comment"/>
+                            <field name="end_auto_comment"/>
+                        
+                        </group>
+                        <group string="Post" class="custom_group">
+                            <field name="post_id" readonly="1"/>
+                            <field name="post_url" widget="url" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem 
+        id="menu_root"
+        name="Marketing"
+        sequence="0"
+    />
+    <menuitem 
+        id="menu_post" 
+        name="Manager Posts" 
+        action="action_posts"  
+        parent="menu_root"
+        sequence="0"
+    />
+   
+    <menuitem 
+        id="menu_marketing_content" 
+        name="Marketing Contents"   
+        parent="menu_root"
+        sequence="20"
+    />
+    <menuitem 
+        id="menu_marketing_subcontent"
+        name="Marketing Content"
+        action="action_marketing_content"
+        parent="menu_marketing_content"
+        sequence="10"
+    />
+
+    <menuitem 
+        id="menu_marketing_product"
+        name="Marketing Products"
+        action="action_marketing_product" 
+        parent="menu_marketing_content"
+        sequence="20"
+    />
+
+    <menuitem
+        id="menu_marketing_blog"
+        name="Marketing Blogs"
+        action ="action_marketing_blog"
+        parent="menu_marketing_content"
+        sequence="30"
+    />
+
+    <!-- Configuration Menu after Marketing Contents -->
+    <menuitem 
+        id="menu_config" 
+        name="Configuration" 
+        parent="menu_root"
+        sequence="30"
+    />
+    <menuitem 
+        id="menu_marketing_comment" 
+        name="Manager Comments"
+        action="action_marketing_comment" 
+        parent="menu_config" 
+        sequence="10"
+    />
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_post_form" model="ir.ui.view">
+        <field name="name">marketing.post.form</field>
+        <field name="model">marketing.content</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="content"/>
+                    </group>
+                    <notebook>
+                        <page string="Facebook">
+                            <field name="post_ids">
+                                <tree>
+                                    <field name="page_id" options="{'no_create': True, 'no_open': True}" />
+                                    <!-- <field name="comment"/> -->
+                                    <field name="comment_suggestion_id" />
+                                    <field name="schedule_post"/>
+                                    <field name="remind_time"/>
+                                    <field name="post_id" />
+                                    <field name="post_url" widget="url" />
+                                    <field name="state" />
+                                    <!-- <button name="post_to_facebook" string="Post to Facebook" type="object" class="oe_highlight"/>
+                                    <button name="post_comment_button" type="object" string="Post Comment" class="oe_highlight" /> -->
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_post_tree" model="ir.ui.view">
+        <field name="name">marketing.content.tree</field>
+        <field name="model">marketing.content</field>
+        <field name="arch" type="xml">
+            <tree string="Facebook">
+                <field name="content"/>
+                <!-- <field name="has_posts"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_posts" model="ir.actions.act_window">
+        <field name="name">Manager Posts</field>
+        <field name="res_model">marketing.content</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,117 @@
+<odoo>
+    <record id="view_manager_account_form" model="ir.ui.view">
+        <field name="name">manager.account.form</field>
+        <field name="model">manager.account</field>
+        <field name="arch" type="xml">
+            <form string="Manager Account">
+                <header>
+                    <button name="load_data" string="Load Information" type="object" class="oe_highlight" context="{'id': id}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_favorite" type="object" class="oe_stat_button">
+                            <field name="is_favorite" widget="boolean_favorite"/>
+                        </button>
+                    </div>
+                    <group>
+                          <!-- Nhóm bên trái -->
+                          <group>
+                            <field name="account_id" />
+                            <field name="access_token" />
+                            <field name="cliend_id" />
+                            <field name="id_secret" />
+                            <field name="last_token_refresh" />
+                          </group>
+                          <!-- Nhóm bên phải -->
+                          <group>
+                            <group string="Account Information">
+                              <field name="account_name" readonly="1" />
+                              <field name="account_avatar" readonly="1" widget="image" />
+                            </group>
+                          </group>
+                    </group>
+                    <notebook colspan="1">
+                        <!-- <page string="Account Information" name="account_info">
+                            <group>
+                                <field name="account_name" readonly="1"/>
+                                <field name="account_avatar" readonly="1" widget="image"/>
+                            </group>
+                        </page> -->
+                        <page string="Pages List" name="pages_list">
+                            <field name="page_ids" readonly="1">
+                                <tree>
+                                    <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                    <field name="page_avatar" widget="image"/>
+                                    <field name="page_name"/>
+                                    <field name="page_id"/>
+                                    <field name="category"/>
+                                </tree> 
+                            </field>
+                        </page>
+                        <page string="Groups List" name="groups_list">
+                            <group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="manager_account_kanban" model="ir.ui.view">
+        <field name="name">manager.account.kanban</field>
+        <field name="model">manager.account</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="account_name"/>
+                <field name="account_avatar"/>
+                <field name="is_favorite"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('manager.account', 'account_avatar', record.id.raw_value)}')"/>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="account_name"/>
+                                        </strong>
+                                    </div>
+                                    <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="manager_account_tree" model="ir.ui.view">
+        <field name="name">manager.account.tree</field>
+        <field name="model">manager.account</field>
+        <field name="arch" type="xml">
+            <tree string="Tài khoản" create="1" delete="1" edit="0">
+                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                <field name="account_avatar" readonly="1" widget="image"/>
+                <field name="account_name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_manager_account" model="ir.actions.act_window">
+        <field name="name">Tài khoản</field>
+        <field name="res_model">manager.account</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="manager_account_kanban"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hãy thêm một tài khoản
+            </p>
+        </field>
+    </record>
+    
+</odoo>

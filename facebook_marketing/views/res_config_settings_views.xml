@@ -1,0 +1,19 @@
+<odoo>
+    <record id="view_res_config_settings_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.inherit.your_module</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='general_settings']//div[@id='languages']" position="inside">
+                <div id="my_setting" style="margin-left:45px">
+                    <!-- <block title="API Token" name="api_setting_container"> -->
+                        <setting id="api_token">
+                            <field name="api_token" class="w-auto ps-1 fw-bold" />
+                        </setting>
+                        
+                    <!-- </block> -->
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

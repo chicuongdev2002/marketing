@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_post_form" model="ir.ui.view">
+        <field name="name">marketing.post.form</field>
+        <field name="model">marketing.content</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="content"/>
+                        <field name="image_ids" 
+                              mode="kanban" 
+                                options="{
+                                    'create_text': 'Add Image',
+                                    'kanban_image_field': 'image',
+                                    'preview_image_field': 'image',
+                                    'kanban_view_ref': 'your_module.marketing_content_image_kanban_view'
+                                }" 
+                              context="{'default_res_model': 'marketing.content', 'default_res_id': active_id}"/>     
+                        <field name="url"/>
+                        <field name="include_link"/>
+                    </group>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_post_tree" model="ir.ui.view">
+        <field name="name">marketing.content.tree</field>
+        <field name="model">marketing.content</field>
+        <field name="arch" type="xml">
+            <tree string="Posts">
+                <field name="content"/>
+                <field name="has_posts"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_posts" model="ir.actions.act_window">
+        <field name="name">Manager Posts</field>
+        <field name="res_model">marketing.content</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,156 @@
+<odoo>
+  <!-- Kanban view for Facebook Group -->
+  <record id="view_facebook_group_kanban" model="ir.ui.view">
+    <field name="name">facebook.group.kanban</field>
+    <field name="model">facebook.group</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_small_column">
+        <field name="group_avatar" />
+        <field name="group_name" />
+        <field name="category" />
+        <field name="member_count" />
+        <field name="is_public" />
+        <templates>
+          <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill o_facebook_group_kanban">
+              <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('facebook.group', 'group_avatar', record.id.raw_value)})" />
+              <div class="oe_kanban_details">
+                <strong class="o_kanban_record_title">
+                  <field name="group_name" />
+                </strong>
+                <div class="o_kanban_tags_section">
+                  <span class="badge badge-pill badge-primary">
+                    <field name="category" />
+                  </span>
+                  <span t-if="record.is_public.raw_value" class="badge badge-pill badge-success">Public</span>
+                  <span t-if="!record.is_public.raw_value" class="badge badge-pill badge-warning">Private</span>
+                </div>
+                <div class="o_kanban_record_bottom">
+                  <div class="oe_kanban_bottom_left">
+                    <span><i class="fa fa-users" />
+                      <field name="member_count" /> members
+                    </span>
+                  </div>
+                  <div class="oe_kanban_bottom_right">
+                    <field name="is_favorite" widget="boolean_favorite" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <!-- Tree view for Facebook Group -->
+  <record id="view_facebook_group_tree" model="ir.ui.view">
+    <field name="name">facebook.group.tree</field>
+    <field name="model">facebook.group</field>
+    <field name="arch" type="xml">
+      <tree string="Facebook Groups">
+        <field name="group_name" />
+        <field name="group_id" />
+        <field name="category" />
+        <field name="member_count" />
+        <field name="is_public" />
+        <field name="is_favorite" widget="boolean_favorite" />
+      </tree>
+    </field>
+  </record>
+
+  <!-- Form view for Facebook Group -->
+  <record id="view_facebook_group_form" model="ir.ui.view">
+    <field name="name">facebook.group.form</field>
+    <field name="model">facebook.group</field>
+    <field name="arch" type="xml">
+      <form string="Facebook Group">
+        <header>
+          <button name="post_to_group" string="Post to Group" type="object" class="oe_highlight" />
+        </header>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button name="toggle_favorite" type="object" class="oe_stat_button" icon="fa-star">
+              <field name="is_favorite" widget="boolean_favorite" />
+            </button>
+          </div>
+          <field name="group_avatar" widget="image" class="oe_avatar" />
+          <div class="oe_title">
+            <h1>
+              <field name="group_name" placeholder="Group Name" />
+            </h1>
+          </div>
+          <group>
+            <group>
+              <field name="group_id" />
+              <field name="category" />
+              <field name="is_public" />
+            </group>
+            <group>
+              <field name="account_id" readonly="1" />
+              <field name="member_count" />
+              <field name="access_token" password="True" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Description">
+              <field name="group_description" placeholder="Enter group description..." />
+            </page>
+            <page string="Categories">
+              <field name="category_ids" widget="many2many_tags" />
+            </page>
+            <page string="Post Content">
+              <field name="post_content" placeholder="Enter post content..." />
+            </page>
+            <page string="Comment Content">
+              <field name="comment_content" placeholder="Enter comment content..." />
+            </page>
+          </notebook>
+        </sheet>
+        <!-- <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers" />
+          <field name="message_ids" widget="mail_thread" />
+        </div> -->
+      </form>
+    </field>
+  </record>
+
+  <!-- Search view for Facebook Group -->
+  <record id="view_facebook_group_search" model="ir.ui.view">
+    <field name="name">facebook.group.search</field>
+    <field name="model">facebook.group</field>
+    <field name="arch" type="xml">
+      <search string="Search Facebook Groups">
+        <field name="group_name" />
+        <field name="group_id" />
+        <field name="category" />
+        <filter string="Favorite" name="favorite" domain="[('is_favorite', '=', True)]" />
+        <filter string="Public Groups" name="public" domain="[('is_public', '=', True)]" />
+        <filter string="Private Groups" name="private" domain="[('is_public', '=', False)]" />
+        <group expand="0" string="Group By">
+          <filter string="Category" name="group_category" context="{'group_by': 'category'}" />
+          <filter string="Account" name="group_account" context="{'group_by': 'account_id'}" />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!-- Action for Facebook Groups -->
+  <record id="action_facebook_group" model="ir.actions.act_window">
+    <field name="name">Facebook Groups</field>
+    <field name="res_model">facebook.group</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="view_id" ref="view_facebook_group_kanban" />
+    <field name="search_view_id" ref="view_facebook_group_search" />
+    <field name="domain">[('account_id', '=', uid)]</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Add a new Facebook Group
+      </p>
+      <p>
+        Create a new Facebook Group to manage and interact with.
+      </p>
+    </field>
+  </record>
+</odoo>
